@@ -1,0 +1,27 @@
+{
+  "name": "nepozitek-portfolio",
+  "version": "1.0.0",
+  "description": "nepozitek.cz portfolio",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidNepozitek/Portfolio.git"
+  },
+  "author": "David Nepožitek",
+  "contributors": [
+    "Ondřej Nepožitek"
+  ],
+  "license": "none",
+  "dependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-less": "*",
+    "gulp-clean-css": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-uglify": "*",
+    "gulp-rename": "*",
+    "browser-sync": "*",
+    "gulp-plumber": "*",
+    "wowjs": "*"
+  }
+}

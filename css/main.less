@@ -110,6 +110,7 @@ textarea {
   .loader{
     display: block;
     opacity: 1;
+    visibility: visible;
   }
 
 }
@@ -240,11 +241,12 @@ textarea {
     }
 
       .landing__box{
-        display: inline-block;
+        display: inline-table;
         position: relative;
         height: 170px;
         width: 300px;
         transition: 0.3s;
+        vertical-align: top;
 
         &:hover{
           background-color: rgba(0,0,0,0.2);
@@ -293,71 +295,14 @@ textarea {
         animation-duration: @l-boxTitlesDuration;
       }
 
-      .landing__box-wrap{
-        width: 100%;
-        height: 100%;
-        position: relative;
-        display: table;
-      }
-
       .landing__box-content{
         display: table-cell;
         height: 100%;
         vertical-align: middle;
       }
 
-      .landing__box:before, .landing__box:after{
-        content: "";
+      .landing__border{
+        height: 170px;
+        width: 300px;
         position: absolute;
-        height: 2px;
-        width: 100%;
-        background-color: white;
-        transition: 0.2s ease;
-      }
-
-      .landing__box-wrap:before, .landing__box-wrap:after{
-        content: "";
-        position: absolute;
-        height: 100%;
-        width: 2px;
-        background-color: white;
-        transition: 0.2s ease;
-      }
-
-      .landing__box.animated:before, .landing__box.animated:after{
-        width: 0;
-        animation-name: l-borderWidth;
-        animation-duration: @l-boxDuration;
-        animation-delay: @l-boxDelay + @l-boxDuration;
-        animation-fill-mode: forwards;
-        transition: none;
-      }
-
-      .landing__box-wrap.animated:before, .landing__box-wrap.animated:after{
-        height: 0;
-        animation-name: l-borderHeight;
-        animation-duration: @l-boxDuration;
-        animation-delay: @l-boxDelay;
-        animation-fill-mode: forwards;
-        transition: none;
-      }
-
-      .landing__box:before{
-        bottom: 0;
-        left: 0;
-      }
-
-      .landing__box:after{
-        top: 0;
-        right: 0;
-      }
-
-      .landing__box-wrap:before{
-        top: 0;
-        left: 0;
-      }
-
-      .landing__box-wrap:after{
-        bottom: 0;
-        right: 0;
       }

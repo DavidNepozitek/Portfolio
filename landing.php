@@ -38,25 +38,27 @@
 
 
             <a href="#" class="wow landing__box landing__box--left landing__box--ondra">
-                <div class="wow landing__box-wrap">
+                <svg class="landing__border">
+                    <line class="landing__border-top" x1="0" y1="0" x2="900"></line>
+                    <line class="landing__border-right" x1="300" y1="0" x2="900"></line>
+                    <line class="landing__border-bottom" x1="0" y1="0" x2="900"></line>
+                    <line class="landing__border-left" x1="0" y1="0" x2="900"></line>
+                </svg>
 
                     <div class="landing__box-content">
                         <h2 class="wow fadeIn landing__box-title">Ondra <br /> Nepožitek</h2>
                         <div class="wow fadeIn landing__box-subtitle landing__box-subtitle--ondra">Back-end developer</div>
                     </div>
 
-                </div>
             </a>
 
             <a href="#" class="wow landing__box landing__box--right landing__box--david">
-                <div class="wow landing__box-wrap">
 
                     <div class="landing__box-content">
                         <h2 class="wow fadeIn landing__box-title">David <br /> Nepožitek</h2>
-                        <div class="wow fadeIn landing__box-subtitle">Back-end developer</div>
+                        <div class="wow fadeIn landing__box-subtitle">Front-end developer</div>
                     </div>
 
-                </div>
             </a>
 
 

@@ -6,9 +6,11 @@ $(window).on("load", function () {
     var wow = new WOW(
         {
             boxClass:     'wow',      // animated element css class (default is wow)
-            animateClass: 'animated', // animation css class (default is animated)
+            animateClass: 'animated' // animation css class (default is animated)
         }
     );
 
     wow.init();
+
+    $(".landing__border").find("line").addClass("animated");
 });

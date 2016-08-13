@@ -201,6 +201,32 @@ textarea {
 @l-boxDuration: 700ms !important;
 @l-boxDelay: 1200ms !important;
 
+@l-lineTransition: 0.5s ease-out;
+
+@keyframes l-top{
+  from {transform: translateX(0)}
+  to {transform: translateX(-300px)}
+}
+
+@keyframes l-right{
+  from {transform: translateY(0)}
+  to {transform: translateY(-170px)}
+}
+
+@keyframes l-bottom{
+  from {transform: translateX(0)}
+  to {transform: translateX(300px)}
+}
+
+@keyframes l-left{
+  from {transform: translateY(0)}
+  to {transform: translateY(170px)}
+}
+@keyframes placeHolder{
+  from {transform: translateY(0)}
+  to {transform: translateY(0)}
+}
+
 @keyframes l-borderHeight {
   from {height: 0;}
   to {height: 100% }
@@ -247,6 +273,7 @@ textarea {
         width: 300px;
         transition: 0.3s;
         vertical-align: top;
+        overflow: hidden;
 
         &:hover{
           background-color: rgba(0,0,0,0.2);
@@ -305,4 +332,73 @@ textarea {
         height: 170px;
         width: 300px;
         position: absolute;
+
+        line{
+          stroke-width: 4;
+          stroke: #fff;
+          fill: none;
+          transition: @l-lineTransition;
+          animation-duration: @l-boxDuration;
+          animation-delay: @l-boxDelay;
+          animation-fill-mode: forwards;
+        }
       }
+
+      .landing__border-top{
+        stroke-dasharray: 330 240 30;
+      }
+
+      .landing__box:hover{
+
+        .landing__border-top{
+          transform: translateX(-570px);
+        }
+      }
+
+      .landing__border-top{
+        transform: translateX(-300px);
+      }
+
+      .landing__border-right{
+        transform: translateY(-170px);
+      }
+
+      .landing__border-bottom{
+        transform: translateX(300px);
+      }
+
+      .landing__border-left{
+        transform: translateY(170px);
+      }
+
+      .landing__box.animated{
+        animation-duration: @l-boxDelay + @l-boxDuration + @l-boxDuration;
+        animation-name: placeHolder;
+
+        line{
+          transition: none;
+        }
+
+        .landing__border-top{
+          transform: translateX(0);
+          animation-name: l-top;
+        }
+
+        .landing__border-right{
+          transform: translateY(0);
+          animation-name: l-right;
+        }
+
+        .landing__border-bottom{
+          transform: translateX(0);
+          animation-name: l-bottom;
+        }
+
+        .landing__border-left{
+          transform: translateY(0);
+          animation-name: l-left;
+        }
+      }
+
+
+

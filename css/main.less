@@ -19,6 +19,7 @@
  *
  * COMPONENTS
  * Landing..............The main landing page.
+ * Leading-section......The leading section of individual sites.
  *
  */
 
@@ -111,6 +112,10 @@ textarea {
   padding: 0.2em 0;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 
 
 
@@ -147,8 +152,11 @@ textarea {
 
 .loader{
   position: fixed;
-  top: 50vh;
-  left: 50%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   display: none;
 }
 
@@ -340,3 +348,56 @@ textarea {
 
 
 
+
+
+/*------------------------------------*\
+  #LEADING-SECTION
+\*------------------------------------*/
+
+.individual--david{
+  background-color: #2f4fd4;
+}
+
+.leading-section{
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  display: table;
+  text-align: center;
+
+  &--david{
+    background: #2f4fd4 url(../img/david_pattern.jpg);
+  }
+}
+
+  .leading-section__content-wrap{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .leading-section__content{
+    display: inline-block;
+    color: white;
+  }
+
+    .leading-section__title{
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 60px;
+      height: 85px;
+      margin: 16px 0;
+    }
+
+    .leading-section__subtitle{
+      font-family: "Merriweather", serif;
+      font-style: italic;
+      font-size: 26px;
+    }
+    .leading-section__line{
+      height: 2px;
+      width: 116%;
+      transform: translateX(-8%);
+      background-color: #fff;
+    }

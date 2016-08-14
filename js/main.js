@@ -1,5 +1,4 @@
 $(window).on("load", function () {
-    $("body").removeClass("preload");
 
 
     /* WOW library init*/
@@ -9,8 +8,8 @@ $(window).on("load", function () {
             animateClass: 'animated' // animation css class (default is animated)
         }
     );
+    
+        wow.init();
 
-    wow.init();
-
-    $(".landing__border").find("line").addClass("animated");
+    $("body").removeClass("preload");
 });

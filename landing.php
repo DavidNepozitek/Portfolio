@@ -52,7 +52,13 @@
 
             </a>
 
-            <a href="#" class="landing__box landing__box--right landing__box--david">
+            <a href="#" class="wow landing__box landing__box--right landing__box--david">
+                <svg class="landing__border">
+                    <line class="landing__border-top" x1="300" y1="0" x2="900" y2="0"></line>
+                    <line class="landing__border-right" x1="300" y1="170" x2="300" y2="510"></line>
+                    <line class="landing__border-bottom" x1="0" y1="170" x2="-900" y2="170"></line>
+                    <line class="landing__border-left" x1="0" y1="0" x2="0" y2="-510"></line>
+                </svg>
 
                     <div class="landing__box-content">
                         <h2 class="wow fadeIn landing__box-title">David <br /> Nepožitek</h2>
@@ -71,7 +77,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script src="js/vendor/wow-old.min.js"></script>
+    <script src="js/vendor/wow.min.js"></script>
 
     <script src="js/scripts.min.js"></script>
 

@@ -24,9 +24,6 @@
 
 
 
-
-
-
 /*------------------------------------*\
   #GLOBAL
 \*------------------------------------*/
@@ -34,6 +31,30 @@
 
 @david-landing-color: #2979ff;
 @ondra-landing-color: #ea8b37;
+
+@1440:  ~"all and (max-width: 90em)";
+@1024: ~"all and (max-width: 82.5em)";
+@960: ~"all and (max-width: 63.9375em)";
+@768: ~"all and (max-width: 59.9375em)";
+@480: ~"all and (max-width: 47.9375em)";
+@360: ~"all and (max-width: 29.9375em)";
+@320: ~"all and (max-width: 22.4375em)";
+
+@1920m: ~"all and (min-width: 120em)";
+@1440m: ~"all and (min-width: 90em)";
+@1024m: ~"all and (min-width: 64em)";
+@960m: ~"all and (min-width: 60em)";
+@768m: ~"all and (min-width: 48em)";
+@480m: ~"all and (min-width: 30em)";
+@360m: ~"all and (min-width: 22.5em)";
+@320m: ~"all and (min-width: 20em)";
+
+@1024h: ~"all and (max-height: 82.5em)";
+@960h: ~"all and (max-height: 63.9375em)";
+@768h: ~"all and (max-height: 59.9375em)";
+@480h: ~"all and (max-height: 47.9375em)";
+@360h: ~"all and (max-height: 29.9375em)";
+@320h: ~"all and (max-height: 22.4375em)";
 
 a[href]{
   text-decoration: none;
@@ -103,14 +124,14 @@ textarea {
   background-image: none !important;
 
   *{
-    opacity: 0;
-    visibility: hidden;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
 
   .loader{
     display: block;
-    opacity: 1;
-    visibility: visible;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
 }
@@ -201,7 +222,7 @@ textarea {
 @l-boxDuration: 700ms !important;
 @l-boxDelay: 1200ms !important;
 
-@l-lineTransition: 0.5s ease-out;
+@l-lineTransition: transform 0.5s ease-out;
 
 @keyframes l-top{
   from {transform: translateX(0)}
@@ -246,11 +267,20 @@ textarea {
   .landing__title{
     font-family: "Merriweather", serif;
     font-weight: 400;
+    font-style: italic;
     font-size: 40px;
     color: white;
     animation-delay: @l-titleDelay;
     animation-duration: @l-titleDuration;
     margin-bottom: 100px;
+
+    @media @360h {
+      margin-bottom: 30px;
+    }
+
+    @media @480{
+      margin-bottom: 40px;
+    }
   }
 
   .landing__main{
@@ -274,6 +304,7 @@ textarea {
         transition: 0.3s;
         vertical-align: top;
         overflow: hidden;
+        margin-bottom: 10px;
 
         &:hover{
           background-color: rgba(0,0,0,0.2);
@@ -282,6 +313,15 @@ textarea {
 
       .landing__box--right{
         margin-left: 170px;
+
+        @media @960{
+          margin-left: 40px;
+        }
+
+        @media @480{
+          display: table;
+          margin: 30px auto 10px auto;
+        }
       }
 
       .landing__box--ondra{
@@ -314,6 +354,7 @@ textarea {
 
       .landing__box-subtitle{
         font-family: "Merriweather", serif;
+        font-style: italic;
         font-size: 16px;
         margin-top: 15px;
         overflow: hidden;
@@ -340,18 +381,40 @@ textarea {
           transition: @l-lineTransition;
           animation-duration: @l-boxDuration;
           animation-delay: @l-boxDelay;
-          animation-fill-mode: forwards;
+          animation-fill-mode: forwards !important;
         }
       }
 
-      .landing__border-top{
+      .landing__border-top,
+      .landing__border-bottom{
         stroke-dasharray: 330 240 30;
+      }
+
+      .landing__border-right,
+      .landing__border-left{
+        stroke-dasharray: 200 110 30;
       }
 
       .landing__box:hover{
 
+        line{
+          stroke-width: 10;
+        }
+
         .landing__border-top{
-          transform: translateX(-570px);
+          transform: translateX(-600px);
+        }
+
+        .landing__border-right{
+          transform: translateY(-340px);
+        }
+
+        .landing__border-bottom{
+          transform: translateX(600px);
+        }
+
+        .landing__border-left{
+          transform: translateY(340px);
         }
       }
 
@@ -372,8 +435,16 @@ textarea {
       }
 
       .landing__box.animated{
-        animation-duration: @l-boxDelay + @l-boxDuration + @l-boxDuration;
         animation-name: placeHolder;
+        animation-duration: @l-boxDelay + @l-boxDuration + @l-boxDuration;
+
+        &:hover{
+          background-color: transparent;
+
+          line{
+            stroke-width: 4;
+          }
+        }
 
         line{
           transition: none;
@@ -382,6 +453,7 @@ textarea {
         .landing__border-top{
           transform: translateX(0);
           animation-name: l-top;
+          animation-delay: @l-boxDelay + @l-boxDuration;
         }
 
         .landing__border-right{
@@ -392,6 +464,7 @@ textarea {
         .landing__border-bottom{
           transform: translateX(0);
           animation-name: l-bottom;
+          animation-delay: @l-boxDelay + @l-boxDuration;
         }
 
         .landing__border-left{

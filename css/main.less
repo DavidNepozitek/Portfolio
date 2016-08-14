@@ -213,54 +213,8 @@ textarea {
   #LANDING
 \*------------------------------------*/
 
-@l-titleDelay: 200ms !important;
-@l-titleDuration: 500ms!important;
-
-@l-boxTitlesDelay: 600ms !important;
-@l-boxTitlesDuration: 800ms !important;
-
-@l-boxDuration: 700ms !important;
-@l-boxDelay: 1200ms !important;
-
-@l-lineTransition: transform 0.5s ease-out;
-
-@keyframes l-top{
-  from {transform: translateX(0)}
-  to {transform: translateX(-300px)}
-}
-
-@keyframes l-right{
-  from {transform: translateY(0)}
-  to {transform: translateY(-170px)}
-}
-
-@keyframes l-bottom{
-  from {transform: translateX(0)}
-  to {transform: translateX(300px)}
-}
-
-@keyframes l-left{
-  from {transform: translateY(0)}
-  to {transform: translateY(170px)}
-}
-@keyframes placeHolder{
-  from {transform: translateY(0)}
-  to {transform: translateY(0)}
-}
-
-@keyframes l-borderHeight {
-  from {height: 0;}
-  to {height: 100% }
-}
-
-@keyframes l-borderWidth {
-  from {width: 0;}
-  to {width: 100% }
-}
-
 .landing{
-  background-color: #1a1f33;
-  background-image: url(../img/landing_pattern.jpg);
+  background: #1a1f33 url(../img/landing_pattern.jpg);
   height: 100%;
 }
 
@@ -270,8 +224,6 @@ textarea {
     font-style: italic;
     font-size: 40px;
     color: white;
-    animation-delay: @l-titleDelay;
-    animation-duration: @l-titleDuration;
     margin-bottom: 100px;
 
     @media @360h {
@@ -347,9 +299,7 @@ textarea {
         text-transform: uppercase;
         margin: 0;
         transition: 0.3s;
-
-        animation-delay: @l-boxTitlesDelay;
-        animation-duration: @l-boxTitlesDuration;
+        opacity: 1;
       }
 
       .landing__box-subtitle{
@@ -358,9 +308,6 @@ textarea {
         font-size: 16px;
         margin-top: 15px;
         overflow: hidden;
-
-        animation-delay: @l-boxTitlesDelay;
-        animation-duration: @l-boxTitlesDuration;
       }
 
       .landing__box-content{
@@ -378,10 +325,6 @@ textarea {
           stroke-width: 4;
           stroke: #fff;
           fill: none;
-          transition: @l-lineTransition;
-          animation-duration: @l-boxDuration;
-          animation-delay: @l-boxDelay;
-          animation-fill-mode: forwards !important;
         }
       }
 
@@ -393,84 +336,6 @@ textarea {
       .landing__border-right,
       .landing__border-left{
         stroke-dasharray: 200 110 30;
-      }
-
-      .landing__box:hover{
-
-        line{
-          stroke-width: 10;
-        }
-
-        .landing__border-top{
-          transform: translateX(-600px);
-        }
-
-        .landing__border-right{
-          transform: translateY(-340px);
-        }
-
-        .landing__border-bottom{
-          transform: translateX(600px);
-        }
-
-        .landing__border-left{
-          transform: translateY(340px);
-        }
-      }
-
-      .landing__border-top{
-        transform: translateX(-300px);
-      }
-
-      .landing__border-right{
-        transform: translateY(-170px);
-      }
-
-      .landing__border-bottom{
-        transform: translateX(300px);
-      }
-
-      .landing__border-left{
-        transform: translateY(170px);
-      }
-
-      .landing__box.animated{
-        animation-name: placeHolder;
-        animation-duration: @l-boxDelay + @l-boxDuration + @l-boxDuration;
-
-        &:hover{
-          background-color: transparent;
-
-          line{
-            stroke-width: 4;
-          }
-        }
-
-        line{
-          transition: none;
-        }
-
-        .landing__border-top{
-          transform: translateX(0);
-          animation-name: l-top;
-          animation-delay: @l-boxDelay + @l-boxDuration;
-        }
-
-        .landing__border-right{
-          transform: translateY(0);
-          animation-name: l-right;
-        }
-
-        .landing__border-bottom{
-          transform: translateX(0);
-          animation-name: l-bottom;
-          animation-delay: @l-boxDelay + @l-boxDuration;
-        }
-
-        .landing__border-left{
-          transform: translateY(0);
-          animation-name: l-left;
-        }
       }
 
 

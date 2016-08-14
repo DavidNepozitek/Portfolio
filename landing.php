@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/styles.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
 
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
@@ -34,10 +33,10 @@
     <main class="landing__main">
         <section class="landing__section">
 
-            <h1 class="wow fadeInDown landing__title">Choose your superhero!</h1>
+            <h1 class="landing__title">Choose your superhero!</h1>
 
 
-            <a href="#" class="wow landing__box landing__box--left landing__box--ondra">
+            <a href="#" class="landing__box landing__box--left landing__box--ondra">
                 <svg class="landing__border">
                     <line class="landing__border-top" x1="300" y1="0" x2="900" y2="0"></line>
                     <line class="landing__border-right" x1="300" y1="170" x2="300" y2="510"></line>
@@ -46,13 +45,13 @@
                 </svg>
 
                     <div class="landing__box-content">
-                        <h2 class="wow fadeIn landing__box-title">Ondra <br /> Nepožitek</h2>
-                        <div class="wow fadeIn landing__box-subtitle landing__box-subtitle--ondra">Back-end developer</div>
+                        <h2 class="landing__box-title">Ondra <br /> Nepožitek</h2>
+                        <div class="landing__box-subtitle landing__box-subtitle--ondra">Back-end developer</div>
                     </div>
 
             </a>
 
-            <a href="#" class="wow landing__box landing__box--right landing__box--david">
+            <a href="#" class="landing__box landing__box--right landing__box--david">
                 <svg class="landing__border">
                     <line class="landing__border-top" x1="300" y1="0" x2="900" y2="0"></line>
                     <line class="landing__border-right" x1="300" y1="170" x2="300" y2="510"></line>
@@ -61,8 +60,8 @@
                 </svg>
 
                     <div class="landing__box-content">
-                        <h2 class="wow fadeIn landing__box-title">David <br /> Nepožitek</h2>
-                        <div class="wow fadeIn landing__box-subtitle">Front-end developer</div>
+                        <h2 class="landing__box-title">David <br /> Nepožitek</h2>
+                        <div class="landing__box-subtitle">Front-end developer</div>
                     </div>
 
             </a>
@@ -77,7 +76,14 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script src="js/vendor/wow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TimelineLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/jquery.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
 
     <script src="js/scripts.min.js"></script>
 

@@ -21,7 +21,6 @@
     "gulp-uglify": "*",
     "gulp-rename": "*",
     "browser-sync": "*",
-    "gulp-plumber": "*",
-    "wowjs": "*"
+    "gulp-plumber": "*"
   }
 }

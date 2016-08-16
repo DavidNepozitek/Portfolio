@@ -1,6 +1,10 @@
 $(window).on("load", function () {
 
 
+    var scrollController = new ScrollMagic.Controller({addIndicators: true});
+
+
+
 
     /* Landing animations */
 
@@ -66,6 +70,137 @@ $(window).on("load", function () {
 
     if($("body").hasClass("individual")){
 
+        $(window).on("load resize", function () {
+            var windowHeight = $(window).innerHeight();
+
+           /* $(".leading-section").css("height", window.screen.availHeight);*/
+
+            console.log("Inner:" + $(window).innerHeight() + "Avail:" + window.screen.availHeight);
+        });
+        
+        
+        /* Navigation */
+
+        var $mainNav = $(".main-navigation"),
+            $navOverlay = $(".main-navigation__overlay"),
+             navWidth = $mainNav.width();
+
+        var $navTop = $(".main-navigation__switch-line--top"),
+            $navMiddle = $(".main-navigation__switch-line--middle"),
+            $navBottom = $(".main-navigation__switch-line--bottom"),
+            $navSwitch = $(".main-navigation__switch");
+
+
+
+        var navScene = new ScrollMagic.Scene({
+            triggerElement: "#about",
+            addIndicators: true
+        })
+            .setClassToggle(".main-navigation__switch", "main-navigation__switch--dark")
+            .triggerHook(0)
+            .addTo(scrollController);
+
+        /*var darkNav = TweenLite.to($navSwitch, 0.1, {css: {className: "+=main-navigation__switch--dark"}});*/
+
+
+        
+        /* Switch hover */
+
+            $(".main-navigation__switch").hover(
+                function () {
+
+                    if(!$mainNav.hasClass("main-navigation--open")){
+                        TweenLite.to([$navTop, $navBottom], 0.3, {x: 0});
+                    }
+
+                },
+                function () {
+
+                    if(!$mainNav.hasClass("main-navigation--open")){
+                        TweenLite.to($navTop, 0.3, {x: -10});
+                        TweenLite.to($navBottom, 0.3, {x: -5});
+                    }
+
+                });
+        
+
+
+
+        /* Hides navigation */
+
+        function hideNav() {
+            TweenLite.to($mainNav, 0.5, {x: navWidth});
+            $mainNav.removeClass("main-navigation--open");
+
+            var hideOverlay = new TimelineLite(),
+                switchMorph = new TimelineLite(),
+                $navSvg = $(".main-navigation__switch svg");
+
+            hideOverlay
+                .to($navOverlay, 0.3, {opacity: 0})
+                .to($navOverlay, 0, {css: {display: "none"}});
+
+            switchMorph
+                .fromTo($navMiddle, 0.3, {scaleX: 0}, {scaleX: 1, transformOrigin: "50% 50%"}, 0)
+                .fromTo($navTop, 0.3, {x: 0, rotation: 45, scaleX: 1.4142, y: -4,transformOrigin: "0 100%"},
+                    {rotation: 0, transformOrigin: "0 100%", y: 0, scaleX: 1, x: -10}, 0)
+                .fromTo($navBottom, 0.3, {x: 0, rotation: -45, scaleX: 1.4142,y: 4,transformOrigin: "0 0%"},
+                    {rotation: 0, transformOrigin: "0 0%", y: 0, scaleX: 1, x: -5}, 0)
+                .to($navSvg, 0, {css: {overflow: "hidden"}}, 0.1);
+        }
+
+
+        /* Shows navigation */
+
+        function showNav() {
+            TweenLite.to($mainNav, 0.5, {x: 0});
+            $mainNav.addClass("main-navigation--open");
+
+            var showOverlay = new TimelineLite(),
+                switchMorph = new TimelineLite(),
+                $navSvg = $(".main-navigation__switch svg");
+
+
+            showOverlay
+                .to($navOverlay, 0, {css: {display: "block"}, opacity: 0})
+                .fromTo($navOverlay, 0.3, {opacity: 0}, {opacity: 1});
+
+
+            switchMorph
+                .to($navSvg, 0, {css: {overflow: "visible"}})
+                .fromTo($navMiddle, 0.3, {scaleX: 1, transformOrigin: "50% 50%"},{scaleX: 0}, 0)
+                .fromTo($navTop, 0.3, {rotation: 0, transformOrigin: "0 100%", y: 0, scaleX: 1},
+                    {x: 0, rotation: 45, scaleX: 1.4142, y: -4,transformOrigin: "0 100%"}, 0)
+                .fromTo($navBottom, 0.3, {rotation: 0, transformOrigin: "0 0%", y: 0, scaleX: 1},
+                    {x: 0, rotation: -45, scaleX: 1.4142,y: 4,transformOrigin: "0 0%"}, 0);
+        }
+
+
+        /* Navigation switch */
+
+        $(".js-nav-switch").click(function () {
+
+            if($mainNav.hasClass("main-navigation--open")){
+                hideNav();
+            }
+            else{
+                showNav();
+            }
+
+        });
+
+
+        var $navItem = $(".main-navigation__item a");
+
+        $navItem.click(function () {
+            hideNav();
+            console.log("wolol")
+        });
+        
+        
+        
+        
+        
 
         /* Leading-section animations */
 
@@ -75,20 +210,115 @@ $(window).on("load", function () {
             $leadingSubtitleBottom = $(".leading-section__subtitle--bottom"),
             $leadingLineTop = $(".leading-section__line--top"),
             $leadingLineBottom = $(".leading-section__line--bottom"),
-            titleHeight = $(".leading-section__title").outerHeight(true);
+            $scrollIcon = $(".scroll-icon"),
+            $scrollWheel = $(".scroll-icon__wheel"),
+            leadingTitleHeight = $(".leading-section__title").outerHeight(true);
+
+
+
+        function scrolling() {
+            TweenLite.fromTo($scrollWheel, 1.3, {opacity: 1, y: 0, scaleY: 1}, {opacity: 0, y: 20, scaleY: 1.5 , onComplete: scrolling});
+        }
 
         leadingTween
             .fromTo($leadingSubtitleTop, 0.7, {y: -100, opacity: 0, ease: Expo.easeOut},
                 {y: 0, opacity: 1, ease: Expo.easeOut}, 0)
             .fromTo($leadingLineTop, 0.5, {scaleX: 0, opacity: 1, ease: Back.easeOut},
                 {scaleX: 1, opacity: 1, ease: Back.easeOut})
-            .fromTo($leadingLineBottom, 0.7, {y: - titleHeight, opacity: 0}, {y: 0, opacity: 1})
+            .fromTo($leadingLineBottom, 0.7, {y: - leadingTitleHeight, opacity: 0}, {y: 0, opacity: 1})
             .fromTo($leadingTitle, 0.5, {opacity: 0}, {opacity: 1}, "-=0.4")
-            .fromTo($leadingSubtitleBottom, 0.4, {y: 50, opacity: 0}, {y: 0, opacity: 1});
+            .fromTo($leadingSubtitleBottom, 0.4, {y: 50, opacity: 0}, {y: 0, opacity: 1})
+            .fromTo([$scrollIcon, $scrollWheel], 0.3, {opacity: 0}, {opacity: 1})
+            .fromTo($scrollWheel, 1.3, {opacity: 1, y: 0}, {opacity: 0, y: 20, scaleY: 1.5, onComplete: scrolling})
+            .fromTo($mainNav, 0.5, {x: navWidth + 80}, {x: navWidth}, 0.5)
+            .to($navTop, 0.5, {x: -10}, 0.5)
+            .to($navBottom, 0.5, {x: -5}, 0.5);
 
+
+
+
+        /* About section animations */
+
+        var $aboutLineTop = $(".about__line--top"),
+            $aboutLineBottom = $(".about__line--bottom"),
+            $aboutHeading = $(".about__heading"),
+            $aboutText = $(".about__text"),
+            aboutTextHeight = $aboutText.outerHeight();
+            aboutTween = new TimelineLite()
+                .fromTo($aboutHeading, 0.5, {y: -50, opacity: 0, ease: Expo.easeOut},
+                    {y: 0, opacity: 1, ease: Expo.easeOut})
+                .fromTo($aboutLineTop, 0.5, {scaleX: 0, opacity: 1, ease: Back.easeOut},
+                    {scaleX: 1, opacity: 1, ease: Back.easeOut})
+                .fromTo($aboutLineBottom, 0.7, {y: - aboutTextHeight, opacity: 0}, {y: 0, opacity: 1})
+                .fromTo($aboutText, 0.5, {opacity: 0}, {opacity: 1}, "-=0.4");
+
+
+
+        var aboutScene = new ScrollMagic.Scene({
+            triggerElement: "#about",
+            addIndicators: true
+        })
+            .setTween(aboutTween)
+            .triggerHook(0.7)
+            .addTo(scrollController)
+            .reverse(false);
+
+
+
+
+        /* Contact section animations */
+
+        var $contactHeading = $(".contact__heading"),
+            $contactMail = $(".contact__mail"),
+            $contactContainer = $(".contact__container"),
+            $brotherContainer = $(".brother"),
+            $brotherText = $(".brother__text"),
+            contactTween = new TimelineLite()
+                .fromTo($contactContainer, 0.7, {scaleY: 0, transformOrigin: "50% 0"},
+                    {scaleY: 1, transformOrigin: "50% 0", ease: Power3.easeIn}, 0.5)
+                .fromTo($brotherContainer, 0.5, {scaleY: 0, transformOrigin: "50% 0"},
+                    {scaleY: 1, transformOrigin: "50% 0", ease: Power3.easeIn})
+                .fromTo($contactHeading, 0.5, {y: -30, opacity: 0}, {y: 0, opacity: 1}, "+=0.6")
+                .fromTo($contactMail, 0.5, {opacity: 0}, {opacity: 1, className: "+=contact__mail--hoverable"})
+                .fromTo($brotherText, 0.3, {opacity: 0, y: 0}, { opacity: 1, y: 0});
+
+        var contactScene = new ScrollMagic.Scene({
+            triggerElement: "#contact",
+            addIndicators: true,
+            offset: 100
+        })
+            .setTween(contactTween)
+            .triggerHook(1)
+            .addTo(scrollController)
+            .reverse(false);
 
     }
 
+
     $("body").removeClass("preload"); //Reveals the page
 
+});
+
+
+$(window).on('beforeunload load', function() {
+    $(window).scrollTop(0);
+});
+
+
+
+/* Smooth scrolling */
+
+$(function() {
+    $('a[href*="#"]:not([href="#"])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+                return false;
+            }
+        }
+    });
 });

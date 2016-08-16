@@ -1,7 +1,7 @@
 /*!
 *
 * PROJECT: Portfolio nepozitek.cz
-* AUTHORS: David & Ondra Nepožitek
+* AUTHORS: David & Ondra Nepozitek
 *
 */
 
@@ -16,10 +16,14 @@
  * Helpers..............Useful helpers.
  *
  * BASE
+ * Individual...........Core styles of individual pages.
+ * Main navigation......Main navigation.
  *
  * COMPONENTS
  * Landing..............The main landing page.
- * Leading-section......The leading section of individual sites.
+ * Leading..............The leading section of individual sites.
+ * About................The about section of individual sites.
+ * Contact..............The contact section of individual sites.
  *
  */
 
@@ -31,6 +35,8 @@
 
 
 @david-landing-color: #2979ff;
+@david-about-color: #2e67c6;
+
 @ondra-landing-color: #ea8b37;
 
 @1440:  ~"all and (max-width: 90em)";
@@ -218,6 +224,162 @@ textarea {
 
 
 /*------------------------------------*\
+  #INDIVIDUAL
+\*------------------------------------*/
+
+
+.individual--david{
+  background-color: #2f4fd4;
+}
+
+
+
+
+
+
+/*------------------------------------*\
+  #MAIN-NAVIGATION
+\*------------------------------------*/
+
+
+.main-navigation{
+  position: fixed;
+  display: inline-block;
+  z-index: 100;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 300px;
+  transform: translateX(300px);
+}
+
+  .main-navigation__switch{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: -80px;
+    background-color: rgba(255,255,255,0.2);
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover{
+      background-color: rgba(255,255,255,0.4);
+    }
+
+    &--dark{
+      background-color: rgba(0,0,0,0.1);
+
+      &:hover{
+        background-color: rgba(0,0,0,0.2);
+      }
+    }
+  }
+
+  .main-navigation--open{
+
+    .main-navigation__switch{
+
+
+      @media all and (max-width: 23.75em) {
+        left: 0;
+        background-color: rgba(0,0,0,0.1);
+
+        &:hover{
+          background-color: rgba(0,0,0,0.2);
+        }
+      }
+    }
+  }
+
+    .main-navigation__switch-svg{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      height: 22px;
+      width: 25px;
+    }
+
+    .main-navigation__switch-line{
+      fill: #fff;
+    }
+
+  .main-navigation__container{
+    display: inline-table;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+  }
+
+  .main-navigation__list{
+    padding: 0;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .main-navigation__item{
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    list-style-type: none;
+    line-height: 80px;
+
+    a{
+      color: #2e67c6;
+      font-size: 26px;
+      transition: 0.5s;
+
+      &:hover{
+        color: #b3b7c2;
+      }
+    }
+
+    &:after{
+      content: "";
+      display: block;
+      margin: auto;
+      width: 40px;
+      height: 2px;
+      background-color: #d4d4d4;
+    }
+
+    &:last-of-type:after{
+      display: none;
+    }
+  }
+
+  .main-navigation__bottom{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+    .main-navigation__bottom-mail{
+      font-family: "Merriweather", serif;
+      font-style: italic;
+      text-align: center;
+      color: #25272b;
+    }
+
+.main-navigation__overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 80;
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+}
+
+
+
+
+
+
+/*------------------------------------*\
   #LANDING
 \*------------------------------------*/
 
@@ -350,13 +512,11 @@ textarea {
 
 
 
+
 /*------------------------------------*\
   #LEADING-SECTION
 \*------------------------------------*/
 
-.individual--david{
-  background-color: #2f4fd4;
-}
 
 .leading-section{
   min-height: 100vh;
@@ -364,16 +524,67 @@ textarea {
   width: 100%;
   display: table;
   text-align: center;
+  position: relative;
 
   &--david{
     background: #2f4fd4 url(../img/david_pattern.jpg);
+
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 192dpi),
+    only screen and (                min-resolution: 2dppx) {
+
+      background: #2f4fd4 url(../img/david_pattern@2x.jpg);
+      background-size:  869px 634px;
+
+    }
   }
 }
+
+  .scroll-icon{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 36px;
+    height: 60px;
+    border-radius: 15px;
+    border: solid 1px #fff;
+    display: block;
+
+    @media @320h {
+      display: none;
+    }
+  }
+
+  .scroll-icon__wheel{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5px;
+    margin: auto;
+    width: 3px;
+    height: 3px;
+    border-radius: 100%;
+    background-color: #fff;
+  }
 
   .leading-section__content-wrap{
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+
+    @media @360h {
+      padding-bottom: 80px;
+    }
+
+    @media @320h {
+      vertical-align: middle;
+    }
   }
 
   .leading-section__content{
@@ -381,23 +592,251 @@ textarea {
     color: white;
   }
 
+    .leading-section__title-wrap{
+      display: inline-block;
+
+      @media @320 {
+        overflow: hidden;
+      }
+    }
+
     .leading-section__title{
       font-family: "Montserrat", sans-serif;
       font-weight: 700;
       text-transform: uppercase;
       font-size: 60px;
-      height: 85px;
-      margin: 16px 0;
+      margin: 16px auto;
+
+      @media @480 {
+        font-size: 40px;
+      }
+
+      @media @360 {
+        font-size: 30px;
+      }
+
+      @media @320 {
+        width: 90%;
+      }
     }
 
     .leading-section__subtitle{
       font-family: "Merriweather", serif;
       font-style: italic;
       font-size: 26px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+
+      @media @480 {
+        font-size: 22px;
+      }
+
+      @media @360 {
+        font-size: 18px;
+      }
+
+      @media @320 {
+        font-size: 18px;
+      }
     }
+
     .leading-section__line{
       height: 2px;
       width: 116%;
-      transform: translateX(-8%);
+      margin-left: -8%;
       background-color: #fff;
+
+      @media @320 {
+        width: 100%;
+        margin: auto;
+      }
     }
+
+
+
+
+
+/*------------------------------------*\
+  #ABOUT
+\*------------------------------------*/
+
+.about{
+  background-color: white;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  padding: 50px 0;
+}
+
+  .about__heading{
+    font-size: 26px;
+    font-family: "Montserrat Light", sans-serif;
+    color: @david-about-color;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  .about__line{
+    width: 100%;
+    height: 2px;
+    background-color: #c9cad1;
+    opacity: 0.5;
+  }
+
+  .about__text-wrap{
+    display: inline-block;
+    width: 700px;
+    
+    @media @480 {
+      width: 90%;
+    }
+  }
+
+  .about__text{
+    padding: 30px 50px;
+    font-family: "Montserrat Light", sans-serif;
+    color: #9396a3;
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: justify;
+    margin: auto;
+    display: inline-block;
+
+    @media @480{
+      padding: 20px 35px;
+    }
+
+    @media @360{
+      padding: 20px 10px;
+    }
+  }
+
+
+
+
+
+/*------------------------------------*\
+  #CONTACT
+\*------------------------------------*/
+
+.contact{
+  background-color: white;
+  display: inline-block;
+  width: 100%;
+}
+
+  .contact__container{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #1a2037;
+  }
+
+  .contact__content{
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    color: white;
+    padding: 30px 0;
+  }
+
+  .contact__heading{
+    font-size: 18px;
+    font-family: "Merriweather", serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .contact__mail{
+    display: inline-block;
+    padding: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    color: white;
+    position: relative;
+
+    @media @480 {
+      font-size: 30px;
+    }
+
+    @media @360 {
+      font-size: 20px;
+    }
+  }
+
+  .contact__mail--hoverable{
+
+    .contact__mail-border{
+      transition-property: width, top;
+      transition-delay: 0.3s, 0s;
+      transition-duration: 0.3s, 0.3s;
+    }
+
+    .contact__mail-fill{
+      transition: 0.2s 0s;
+    }
+
+    &:hover{
+
+      .contact__mail-border{
+        transition-delay: 0s, 0.2s;
+        width: 100%;
+        top: 0;
+      }
+
+      .contact__mail-fill{
+        height: 100%;
+        transition-delay: 0.2s;
+      }
+    }
+  }
+
+  .contact__mail-border{
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    top: 100%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: #fff;
+
+    @media @360 {
+      width: 50px;
+    }
+  }
+
+  .contact__mail-fill{
+    position: absolute;
+    width: 100%;
+    height: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: rgba(255,255,255,0.1);
+  }
+
+
+.brother{
+  width: 100%;
+  display: inline-block;
+  background-color: #2e66c5;
+  text-align: center;
+}
+
+.brother__text{
+  display: inline-block;
+  font-family: "Merriweather", serif;
+  font-style: italic;
+  color: white;
+  text-decoration: underline !important;
+  padding: 10px 0;
+
+  &:hover{
+    text-decoration: none !important;
+  }
+}

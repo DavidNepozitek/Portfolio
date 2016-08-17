@@ -74,8 +74,6 @@ $(window).on("load", function () {
             var windowHeight = $(window).innerHeight();
 
            /* $(".leading-section").css("height", window.screen.availHeight);*/
-
-            console.log("Inner:" + $(window).innerHeight() + "Avail:" + window.screen.availHeight);
         });
         
         
@@ -94,13 +92,12 @@ $(window).on("load", function () {
 
         var navScene = new ScrollMagic.Scene({
             triggerElement: "#about",
-            addIndicators: true
+            addIndicators: true,
+            offset: -40
         })
             .setClassToggle(".main-navigation__switch", "main-navigation__switch--dark")
             .triggerHook(0)
             .addTo(scrollController);
-
-        /*var darkNav = TweenLite.to($navSwitch, 0.1, {css: {className: "+=main-navigation__switch--dark"}});*/
 
 
         

@@ -17,7 +17,8 @@
  *
  * BASE
  * Individual...........Core styles of individual pages.
- * Main navigation......Main navigation.
+ * Color-mutations......Specific colors for individual sites.
+ * Main-navigation......Main navigation.
  *
  * COMPONENTS
  * Landing..............The main landing page.
@@ -35,8 +36,6 @@
 
 
 @david-landing-color: #2979ff;
-@david-about-color: #2e67c6;
-
 @ondra-landing-color: #ea8b37;
 
 @1440:  ~"all and (max-width: 90em)";
@@ -130,41 +129,67 @@ textarea {
   #LOADER
 \*------------------------------------*/
 
-
-.preload{
-  background-image: none !important;
-
-  *{
-    opacity: 0 !important;
-    visibility: hidden !important;
-  }
-
-  .loader{
-    display: block;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-
+@keyframes pulse {
+  0%{opacity: 0; transform: scale(1)}
+  50%{opacity: 0.6; transform: scale(5)}
+  100%{opacity: 0; transform: scale(7)}
 }
 
 
-.no-js{
+.js{
+  .preload{
+    background-image: none !important;
+
+    *{
+      visibility: hidden !important;
+    }
+
+    .loader{
+      display: block;
+      opacity: 1 !important;
+      visibility: visible !important;
+      overflow: visible !important;
+
+      circle{
+        visibility: visible !important;
+        stroke: #fff;
+        stroke-width: 0.5;
+        transform-origin: 50% 50%;
+        fill: transparent;
+
+        animation-name: pulse;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+
+      circle:nth-of-type(2){
+        animation-delay: 0.5s;
+      }
+    }
+
+  }
+
 
   .loader{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
     display: none;
   }
 }
 
 
-.loader{
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  display: none;
+.no-js{
+  .loader{
+    display: none;
+  }
 }
+
 
 
 
@@ -228,8 +253,41 @@ textarea {
 \*------------------------------------*/
 
 
+/*------------------------------------*\
+  #COLOR-MUTATIONS
+\*------------------------------------*/
+
 .individual--david{
   background-color: #2f4fd4;
+
+  .leading-section{
+    background: #2f4fd4 url(../img/david_pattern4.jpg);
+
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 192dpi),
+    only screen and (                min-resolution: 2dppx) {
+
+      background: #2f4fd4 url(../img/david_pattern@2x.jpg);
+      background-size:  869px 634px;
+
+    }
+  }
+
+  .main-navigation__item a{
+    color: #2e67c6;
+  }
+
+  .about__heading{
+    color: #2e67c6;
+  }
+
+  .brother{
+    background-color: #2e66c5;
+  }
 }
 
 
@@ -240,6 +298,13 @@ textarea {
 /*------------------------------------*\
   #MAIN-NAVIGATION
 \*------------------------------------*/
+
+.no-js{
+
+  .main-navigation{
+    display: none;
+  }
+}
 
 
 .main-navigation{
@@ -311,6 +376,7 @@ textarea {
     height: 100%;
     width: 100%;
     background-color: white;
+    padding-bottom: 75px;
   }
 
   .main-navigation__list{
@@ -326,8 +392,11 @@ textarea {
     list-style-type: none;
     line-height: 80px;
 
+    @media @360 {
+      line-height: 70px;
+    }
+
     a{
-      color: #2e67c6;
       font-size: 26px;
       transition: 0.5s;
 
@@ -363,6 +432,27 @@ textarea {
       font-style: italic;
       text-align: center;
       color: #25272b;
+
+      &:hover{
+        text-decoration: underline !important;
+      }
+    }
+
+    .main-navigation__bottom-linkedin{
+      width: 80px;
+      display: block;
+      margin: 0 auto 10px auto;
+
+      .linkedin-rectangle{
+        transition: 0.3s;
+      }
+
+      &:hover{
+
+        .linkedin-rectangle{
+          fill: #0077B5;
+        }
+      }
     }
 
 .main-navigation__overlay{
@@ -525,23 +615,6 @@ textarea {
   display: table;
   text-align: center;
   position: relative;
-
-  &--david{
-    background: #2f4fd4 url(../img/david_pattern.jpg);
-
-    @media
-    only screen and (-webkit-min-device-pixel-ratio: 2),
-    only screen and (   min--moz-device-pixel-ratio: 2),
-    only screen and (     -o-min-device-pixel-ratio: 2/1),
-    only screen and (        min-device-pixel-ratio: 2),
-    only screen and (                min-resolution: 192dpi),
-    only screen and (                min-resolution: 2dppx) {
-
-      background: #2f4fd4 url(../img/david_pattern@2x.jpg);
-      background-size:  869px 634px;
-
-    }
-  }
 }
 
   .scroll-icon{
@@ -584,6 +657,7 @@ textarea {
 
     @media @320h {
       vertical-align: middle;
+      padding-bottom: 0;
     }
   }
 
@@ -672,7 +746,6 @@ textarea {
   .about__heading{
     font-size: 26px;
     font-family: "Montserrat Light", sans-serif;
-    color: @david-about-color;
     font-weight: 300;
     margin-bottom: 10px;
   }
@@ -771,8 +844,8 @@ textarea {
 
     .contact__mail-border{
       transition-property: width, top;
-      transition-delay: 0.3s, 0s;
-      transition-duration: 0.3s, 0.3s;
+      transition-delay: 0.2s, 0s;
+      transition-duration: 0.2s, 0.2s;
     }
 
     .contact__mail-fill{
@@ -824,7 +897,6 @@ textarea {
 .brother{
   width: 100%;
   display: inline-block;
-  background-color: #2e66c5;
   text-align: center;
 }
 

@@ -19,13 +19,13 @@
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400i|Montserrat:700&subset=latin-ext" rel="stylesheet">
     <link href="http://allfont.net/allfont.css?fonts=montserrat-light" rel="stylesheet" type="text/css" />
 </head>
-<body class="individual individual--david preload">
+<body class="individual individual--<?php echo $personal; ?> preload">
 
 <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" class="loader">
-        <circle cx="22" cy="22" r="4">
-        </circle>
-        <circle cx="22" cy="22" r="4">
-        </circle>
+    <circle cx="22" cy="22" r="4">
+    </circle>
+    <circle cx="22" cy="22" r="4">
+    </circle>
 </svg>
 
 <!--[if lt IE 8]>
@@ -55,7 +55,7 @@
         <div class="main-navigation__bottom">
             <a href="#" class="main-navigation__bottom-linkedin" >
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                 viewBox="0 0 579.4 144" style="enable-background:new 0 0 579.4 144;" xml:space="preserve">
+                     viewBox="0 0 579.4 144" style="enable-background:new 0 0 579.4 144;" xml:space="preserve">
                 <g>
                     <g>
                         <g>
@@ -89,7 +89,7 @@
                 </g>
                 </svg>
             </a>
-            <a href="#" class="main-navigation__bottom-mail">david@nepozitek.cz</a>
+            <a href="mailto:<?php echo $text[$personal]["social_email"]; ?>" class="main-navigation__bottom-mail"><?php echo $text[$personal]["social_email"]; ?></a>
         </div>
     </div>
 </nav>
@@ -99,18 +99,18 @@
 
 <main class="individual__main">
 
-    <section class="leading-section leading-section--david" id="leading-section">
+    <section class="leading-section leading-section--<?php echo $personal; ?>" id="leading-section">
 
         <div class="leading-section__content-wrap">
             <div class="leading-section__content">
 
-                <p class="leading-section__subtitle leading-section__subtitle--top">Greetings! My name is</p>
+                <p class="leading-section__subtitle leading-section__subtitle--top"><?php echo $text[$personal]["leading_top"]; ?></p>
                 <div class="leading-section__title-wrap">
                     <div class="leading-section__line leading-section__line--top"></div>
-                    <h1 class="leading-section__title">David Nepožitek</h1>
+                    <h1 class="leading-section__title"><?php echo $text[$personal]["leading_name"]; ?></h1>
                     <div class="leading-section__line leading-section__line--bottom"></div>
                 </div>
-                <p class="leading-section__subtitle leading-section__subtitle--bottom">My passion is to create modern websites</p>
+                <p class="leading-section__subtitle leading-section__subtitle--bottom"><?php echo $text[$personal]["leading_bottom"]; ?></p>
 
             </div>
         </div>
@@ -129,7 +129,7 @@
         <div class="about__text-wrap">
             <div class="about__line about__line--top"></div>
             <p class="about__text">
-                Lorem ipsum David Nepožitek, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                <?php echo $text[$personal]["about_text"]; ?>
             </p>
             <div class="about__line about__line--bottom"></div>
         </div>
@@ -141,8 +141,8 @@
 
             <div class="contact__content">
                 <h2 class="contact__heading">Drop me a line!</h2>
-                <a href="mailto:david@nepozitek.cz" class="contact__mail">
-                    david@nepozitek.cz
+                <a href="mailto:<?php echo $text[$personal]["social_email"]; ?>" class="contact__mail">
+                    <?php echo $text[$personal]["social_email"]; ?>
                     <div class="contact__mail-border"></div>
                     <div class="contact__mail-fill"></div>
                 </a>
@@ -151,7 +151,7 @@
         </div>
 
         <div class="brother">
-            <a href="#" class="brother__text">
+            <a href="<?php echo $personal == "david" ? $urlOndra : $urlDavid; ?>" class="brother__text">
                 Not satisfied? Check my brother!
             </a>
         </div>

@@ -261,7 +261,7 @@ textarea {
   background-color: #2f4fd4;
 
   .leading-section{
-    background: #2f4fd4 url(../img/david_pattern4.jpg);
+    background: #2f4fd4 url(../img/david_pattern.jpg);
 
     @media
     only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -289,6 +289,40 @@ textarea {
     background-color: #2e66c5;
   }
 }
+
+.individual--ondra{
+  background-color: #f27c36;
+
+  .leading-section{
+    background: #f27c36 url(../img/ondra_pattern.jpg);
+
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 192dpi),
+    only screen and (                min-resolution: 2dppx) {
+
+      background: #f27c36 url(../img/ondra_pattern@2x.jpg);
+      background-size:  869px 634px;
+
+    }
+  }
+
+  .main-navigation__item a{
+    color: #f27c36;
+  }
+
+  .about__heading{
+    color: #f27c36;
+  }
+
+  .brother{
+    background-color: #f27c36;
+  }
+}
+
 
 
 
@@ -476,6 +510,19 @@ textarea {
 .landing{
   background: #1a1f33 url(../img/landing_pattern.jpg);
   height: 100%;
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+
+    background: #1a1f33 url(../img/landing_pattern@2x.jpg);
+    background-size:  869px 634px;
+
+  }
 }
 
   .landing__title{
@@ -518,8 +565,11 @@ textarea {
         overflow: hidden;
         margin-bottom: 10px;
 
-        &:hover{
-          background-color: rgba(0,0,0,0.2);
+        &--hoverable{
+          
+          &:hover{
+            background-color: rgba(0,0,0,0.2);
+          }
         }
       }
 

@@ -1,7 +1,7 @@
 $(window).on("load", function () {
 
 
-    var scrollController = new ScrollMagic.Controller({addIndicators: true});
+    var scrollController = new ScrollMagic.Controller();
 
 
 
@@ -11,6 +11,7 @@ $(window).on("load", function () {
     if($("body").hasClass("landing")){
 
         var landingTween = new TimelineLite(),
+            $box = $(".landing__box"),
             $title = $(".landing__title"),
             $boxContent = $(".landing__box-content"),
             $top = $(".landing__border-top"),
@@ -25,10 +26,16 @@ $(window).on("load", function () {
             .to($left, 0.3, {y:170}, "border")
             .to($bottom, 0.3, {x:300}, "border+=0.6")
             .to($right, 0.3, {y:-170}, "border")
-            .to($top, 0.3, {x:-300}, "border+=0.6");
+            .to($top, 0.3, {x:-300}, "border+=0.6")
+            .to($box, 0, {className: "+=landing__box--hoverable"});
 
         $(".landing__box").hover(
             function () {
+
+                if(!$(this).hasClass("landing__box--hoverable")){
+                    return false;
+                }
+
                 var boxEnter = new TimelineLite(),
                     $topHover = $(this).find(".landing__border-top"),
                     $rightHover = $(this).find(".landing__border-right"),
@@ -44,6 +51,11 @@ $(window).on("load", function () {
                     .to($lineHover, 0.3, {strokeWidth: 10}, 0);
         },
             function () {
+                
+                if(!$(this).hasClass("landing__box--hoverable")){
+                    return false;
+                }
+
                 var boxLeave = new TimelineLite(),
                     $topHover = $(this).find(".landing__border-top"),
                     $rightHover = $(this).find(".landing__border-right"),
@@ -92,7 +104,6 @@ $(window).on("load", function () {
 
         var navScene = new ScrollMagic.Scene({
             triggerElement: "#about",
-            addIndicators: true,
             offset: -40
         })
             .setClassToggle(".main-navigation__switch", "main-navigation__switch--dark")
@@ -191,7 +202,6 @@ $(window).on("load", function () {
 
         $navItem.click(function () {
             hideNav();
-            console.log("wolol")
         });
         
         
@@ -252,8 +262,7 @@ $(window).on("load", function () {
 
 
         var aboutScene = new ScrollMagic.Scene({
-            triggerElement: "#about",
-            addIndicators: true
+            triggerElement: "#about"
         })
             .setTween(aboutTween)
             .triggerHook(0.7)
@@ -281,7 +290,6 @@ $(window).on("load", function () {
 
         var contactScene = new ScrollMagic.Scene({
             triggerElement: "#contact",
-            addIndicators: true,
             offset: 100
         })
             .setTween(contactTween)

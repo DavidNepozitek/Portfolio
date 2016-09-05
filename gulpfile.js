@@ -44,6 +44,24 @@ gulp.task("scripts_main", function() {
 
 });
 
+gulp.task("scripts_vendor", function() {
+
+    return gulp.src([
+        "js/vendor/TweenLite.min.js",
+        "js/vendor/TimelineLite.min.js",
+        "js/vendor/jquery.gsap.min.js",
+        "js/vendor/CSSPlugin.min.js",
+        "js/vendor/EasePack.min.js",
+        "js/vendor/ScrollMagic.min.js",
+        "js/vendor/animation.gsap.min.js"
+    ])
+        .pipe(concat("vendor.min.js"))
+        .pipe(plumber(plumberOpts))
+        .pipe(uglify())
+        .pipe(gulp.dest("js"));
+
+});
+
 gulp.task("browser-sync", function () {
     browserSync.init({
         proxy: "localhost"
@@ -51,9 +69,11 @@ gulp.task("browser-sync", function () {
 });
 
 
-gulp.task("watch", ["styles_main", "scripts_main", "browser-sync"], function() {
+gulp.task("watch", ["styles_main", "scripts_main", "scripts_vendor","browser-sync"], function() {
 
     gulp.watch("js/*.js", ["scripts_main"]);
+
+    gulp.watch("js/vendor/*.js", ["scripts_vendor"]);
 
     gulp.watch(["css/*.less", "css/*.css"], ["styles_main"]);
 

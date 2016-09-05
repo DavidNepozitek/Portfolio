@@ -6,10 +6,28 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1,height=device-heigh">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <title><?php echo $text[$personal]["title"]; ?></title>
+    <meta name="description" content="<?php echo $text[$personal]["description"]; ?>">
+    <meta name="author" content="David Nepožitek">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1,height=device-height">
+
+    <meta property="og:title" content="<?php echo $text[$personal]["title"]; ?>" />
+    <meta property="og:description" content="<?php echo $text[$personal]["description"]; ?>" />
+    <meta property="og:image" content="<?php echo $urlBase; ?>/img/<?php echo $personal; ?>_op.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content=" <?php echo $personal == "ondra" ? $urlOndra : $urlDavid; ?>" />
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo $urlBase; ?>/img/fav_<?php echo $personal; ?>/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo $urlBase; ?>/img/fav_<?php echo $personal; ?>/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $urlBase; ?>/img/fav_<?php echo $personal; ?>/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $urlBase; ?>/img/fav_<?php echo $personal; ?>/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php echo $urlBase; ?>/img/fav_<?php echo $personal; ?>/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php echo $urlBase; ?>/img/fav_<?php echo $personal; ?>/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="<?php echo $urlBase; ?>/img/fav_<?php echo $personal; ?>/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="<?php echo $urlBase; ?>/img/fav_<?php echo $personal; ?>/favicon-16x16.png" sizes="16x16" />
+    <meta name="application-name" content="<?php echo $text[$personal]["title"]; ?>"/>
+    <meta name="msapplication-TileColor" content="#<?php echo $text[$personal]["fav_color"]; ?>" />
+    <meta name="msapplication-TileImage" content="<?php echo $urlBase; ?>/img/fav_<?php echo $personal; ?>/mstile-144x144.png" />
 
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/styles.min.css">
@@ -53,7 +71,7 @@
             <li class="main-navigation__item"><a href="#contact">Contact</a></li>
         </ul>
         <div class="main-navigation__bottom">
-            <a href="#" class="main-navigation__bottom-linkedin" >
+            <a href="<?php echo $text[$personal]["social_linkedin"]; ?>" class="main-navigation__bottom-linkedin" target="_blank">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                      viewBox="0 0 579.4 144" style="enable-background:new 0 0 579.4 144;" xml:space="preserve">
                 <g>
@@ -128,9 +146,9 @@
 
         <div class="about__text-wrap">
             <div class="about__line about__line--top"></div>
-            <p class="about__text">
+            <div class="about__text">
                 <?php echo $text[$personal]["about_text"]; ?>
-            </p>
+            </div>
             <div class="about__line about__line--bottom"></div>
         </div>
 
@@ -162,16 +180,8 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TimelineLite.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/jquery.gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/plugins/CSSPlugin.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+<script src="js/vendor.min.js"></script>
 
 <script src="js/scripts.min.js"></script>
 

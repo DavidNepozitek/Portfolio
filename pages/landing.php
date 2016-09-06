@@ -29,9 +29,9 @@
     <meta name="msapplication-TileColor" content="#273150" />
     <meta name="msapplication-TileImage" content="<?php echo $urlBase; ?>/img/fav_landing/mstile-144x144.png" />
 
-    <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" href="css/styles.min.css">
-    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <link rel="stylesheet" href="<?php echo $urlBase; ?>/css/normalize.min.css">
+    <link rel="stylesheet" href="<?php echo $urlBase; ?>/css/styles.min.css">
+    <script src="<?php echo $urlBase; ?>/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400i|Montserrat:700&subset=latin-ext" rel="stylesheet">
 </head>
 <body class="landing preload">
@@ -93,11 +93,11 @@
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="<?php echo $urlBase; ?>/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-<script src="js/vendor.min.js"></script>
+<script src="<?php echo $urlBase; ?>/js/vendor.min.js"></script>
 
-<script src="js/scripts.min.js"></script>
+<script src="<?php echo $urlBase; ?>/js/scripts.min.js"></script>
 
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

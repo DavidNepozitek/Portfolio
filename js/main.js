@@ -81,12 +81,6 @@ $(window).on("load", function () {
     /* Individual site animations */
 
     if($("body").hasClass("individual")){
-
-        $(window).on("load resize", function () {
-            var windowHeight = $(window).innerHeight();
-
-           /* $(".leading-section").css("height", window.screen.availHeight);*/
-        });
         
         
         /* Navigation */
